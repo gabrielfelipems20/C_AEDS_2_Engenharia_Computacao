@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Struct para os elementos da fila
 typedef struct elemento{
     int info;
     struct elemento *link;
 }ELEMENTO;
 
+//Struct fila
 typedef struct fila{
     struct elemento *inicio;
     struct elemento *fim;
     int lenght;
 }FILA;
 
+//Cabeçalho de funções
 int filaVazia(FILA *fila);
 int insereElemento(FILA *fila, int valor);
 int removeElemento(FILA *fila, int *valor);
@@ -48,6 +51,8 @@ int main(){
         printf("ERRO AO INSERIR ELEMENTO");
     }
 
+    printf("\nTamanho da fila: %d\n", fila1.lenght);
+
     //Remove elemento da fila
 
     int n_removido;
@@ -59,6 +64,8 @@ int main(){
         printf("ERRO AO REMOVER ELEMENTO\n");
     }
 
+    printf("\nTamanho da fila: %d\n", fila1.lenght);
+
     // Exclui a fila
 
     int l = excluiFila(&fila1);
@@ -68,11 +75,13 @@ int main(){
         printf("ERRO AO EXCLUIR A FILA");
     }
     
-     if (filaVazia(&fila1)){
+    if (filaVazia(&fila1)){
         printf("FILA VAZIA\n");
     } else {
         printf("FILA COM ELEMENTOS\n");
     }
+
+    printf("\nTamanho da fila: %d\n", fila1.lenght);
 
     return 0;
 }
@@ -147,7 +156,7 @@ int excluiFila(FILA *fila){
     if(!filaVazia(fila)){ //Se a fila esta vazia
 
         do{
-            removeElemento(fila, &valor); // Remove elemento
+            removeElemento(fila, &valor); // Remove nó
         }while(!filaVazia(fila)); // Enquanto a fila nao estiver vazia
 
         if(filaVazia(fila)){ 
